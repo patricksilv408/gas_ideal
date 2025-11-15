@@ -1,17 +1,17 @@
-// Update this page (the content is just a fallback if you fail to update the page)
-
-import { MadeWithDyad } from "@/components/made-with-dyad";
+import HeroSection from "@/components/hero-section";
+import BenefitsSection from "@/components/benefits-section";
+import ProductSection from "@/components/product-section";
+import Footer from "@/components/footer";
+import WhatsAppFloat from "@/components/whatsapp-float";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">
-          Start building your amazing project here!
-        </p>
-      </div>
-      <MadeWithDyad />
+    <div className="min-h-screen">
+      <HeroSection />
+      <BenefitsSection />
+      <ProductSection />
+      <Footer />
+      <WhatsAppFloat />
     </div>
   );
 };
