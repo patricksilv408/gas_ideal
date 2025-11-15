@@ -52,7 +52,7 @@ const HeroSection = () => {
         <img 
           src="/gasideal-logo.png" 
           alt="Gás Ideal Logo" 
-          className="mx-auto mb-6 h-24 w-auto drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]" 
+          className="mx-auto mb-6 h-48 w-auto drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]" 
         />
 
         {/* Badge Dinâmico com Animação */}
