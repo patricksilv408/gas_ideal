@@ -13,23 +13,14 @@ const HeroSection = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/hero-bg.webp')" }}
       >
-        <div className="absolute inset-0 bg-blue-600/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0000FF]/40 via-[#0000FF]/30 to-[#0000FF]/50"></div>
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 py-20 text-center">
-        {/* Logo */}
-        <div className="mb-8 flex justify-center animate-fade-in">
-          <img 
-            src="/gasideal-logo.png" 
-            alt="Gás Ideal - Clicou. Pediu. Chegou!" 
-            className="h-32 md:h-40 w-auto drop-shadow-2xl"
-          />
-        </div>
-
         {/* Badge */}
-        <Badge className="mb-6 bg-green-500 hover:bg-green-600 text-white text-sm md:text-base px-4 py-2 animate-pulse">
-          🔥 ABERTO AGORA - ENTREGA EM ATÉ 30 MIN
+        <Badge className="mb-6 bg-[#00FF00] hover:bg-[#00DD00] text-white text-sm md:text-base px-4 py-2 animate-pulse">
+          🟢 ABERTO AGORA - ENTREGA EM ATÉ 30 MIN
         </Badge>
 
         {/* Main Headline */}
@@ -49,7 +40,7 @@ const HeroSection = () => {
           <Button
             asChild
             size="lg"
-            className="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white font-bold text-lg px-8 py-7 rounded-xl shadow-2xl hover:shadow-green-500/50 transition-all duration-300 hover:scale-105 border-2 border-green-400"
+            className="w-full sm:w-auto bg-[#00FF00] hover:bg-[#00DD00] text-white font-bold text-lg px-8 py-7 rounded-xl shadow-2xl hover:shadow-green-500/50 transition-all duration-300 hover:scale-105 border-2 border-green-400"
           >
             <a 
               href={`https://wa.me/${whatsappNumber}`}
@@ -68,7 +59,7 @@ const HeroSection = () => {
           <Button
             asChild
             size="lg"
-            className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg px-8 py-7 rounded-xl shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105 border-2 border-blue-400"
+            className="w-full sm:w-auto bg-[#0000FF] hover:bg-[#0000DD] text-white font-bold text-lg px-8 py-7 rounded-xl shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105 border-2 border-blue-400"
           >
             <a 
               href={`tel:${phoneNumber}`}
