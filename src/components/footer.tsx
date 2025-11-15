@@ -1,4 +1,5 @@
 import { Phone, Clock, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const whatsappNumber = "5571982303179";
@@ -85,6 +86,9 @@ const Footer = () => {
           <p className="text-gray-400 text-sm">
             © {new Date().getFullYear()} Gás Ideal. Todos os direitos reservados.
           </p>
+          <Link to="/politica-de-privacidade" className="text-sm text-gray-500 hover:text-white transition-colors mt-2 inline-block">
+            Política de Privacidade e Entrega
+          </Link>
           <p className="text-[#00FFFF] font-semibold mt-2">
             CLICOU. PEDIU. CHEGOU!
           </p>
