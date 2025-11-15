@@ -11,11 +11,11 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="bg-white rounded-2xl px-6 py-3 shadow-lg">
+          <div>
             <img 
               src="/gasideal-logo.png" 
               alt="Gás Ideal - Clicou. Pediu. Chegou!" 
-              className="h-10 w-auto"
+              className="h-12 w-auto"
             />
           </div>
 
