@@ -16,7 +16,7 @@ const HeroSection = () => {
       </div>
 
       {/* Badge at the top */}
-      <div className="relative z-10 pt-8 text-center">
+      <div className="relative z-10 pt-4 text-center">
         <Badge className="bg-[#00FF00] hover:bg-[#00DD00] text-white text-sm md:text-base px-4 py-2 animate-pulse">
           🟢 ABERTO AGORA - ENTREGA EM ATÉ 30 MIN
         </Badge>
