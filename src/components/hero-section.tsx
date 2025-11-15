@@ -35,7 +35,7 @@ const HeroSection = () => {
 
             {/* Subtítulo */}
             <p className="text-white text-xl max-w-xl mx-auto lg:mx-0">
-              Gás de cozinha e atendimento de confiança, direto na sua porta.
+              Qualidade Ultragaz com a entrega mais rápida e confiável de Camaçari. Peça agora e relaxe!
             </p>
 
             {/* Botões */}
