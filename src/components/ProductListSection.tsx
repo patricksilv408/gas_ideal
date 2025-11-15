@@ -1,11 +1,26 @@
 import { Link } from "react-router-dom";
-import { products } from "@/data/products";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
+import { useProducts } from "@/queries/products";
+import { Skeleton } from "@/components/ui/skeleton";
+
+const ProductCardSkeleton = () => (
+  <div className="space-y-4">
+    <Skeleton className="h-[250px] w-full rounded-xl" />
+    <div className="space-y-2 p-2">
+      <Skeleton className="h-6 w-3/4" />
+      <Skeleton className="h-8 w-1/2" />
+      <Skeleton className="h-4 w-1/4" />
+    </div>
+  </div>
+);
 
 const ProductListSection = () => {
-  const formatPrice = (price: number) => {
+  const { data: products, isLoading, isError } = useProducts();
+
+  const formatPrice = (price: number | null) => {
+    if (price === null) return "Preço sob consulta";
     return new Intl.NumberFormat("pt-BR", {
       style: "currency",
       currency: "BRL",
@@ -32,14 +47,21 @@ const ProductListSection = () => {
 
           {/* Products Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {products.map((product) => (
+            {isLoading && Array.from({ length: 4 }).map((_, index) => <ProductCardSkeleton key={index} />)}
+            
+            {isError && (
+              <div className="col-span-full text-center text-red-600 bg-red-100 p-4 rounded-lg">
+                <p>Ocorreu um erro ao carregar os produtos. Tente novamente mais tarde.</p>
+              </div>
+            )}
+
+            {products?.map((product) => (
               <Link
                 key={product.id}
                 to={`/produto/${product.slug}`}
                 className="group"
               >
                 <Card className="h-full border-none shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-white overflow-hidden">
-                  {/* Product Image */}
                   <div className="relative bg-gradient-to-br from-[#00FFFF]/10 to-[#0000FF]/10 p-6 flex items-center justify-center min-h-[250px]">
                     {product.availability === "in stock" && (
                       <Badge className="absolute top-4 right-4 bg-[#00FF00] text-white text-xs px-3 py-1">
@@ -47,13 +69,12 @@ const ProductListSection = () => {
                       </Badge>
                     )}
                     <img
-                      src={product.image}
+                      src={product.image || '/placeholder.svg'}
                       alt={product.title}
                       className="w-full h-auto max-w-[180px] object-contain group-hover:scale-110 transition-transform duration-300"
                     />
                   </div>
 
-                  {/* Product Info */}
                   <CardHeader className="pb-3">
                     <CardTitle className="text-lg font-bold text-gray-900 group-hover:text-[#0000FF] transition-colors">
                       {product.title}
