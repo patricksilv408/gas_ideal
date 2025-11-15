@@ -1,3 +1,5 @@
+import { pushToDataLayer } from "@/lib/utils";
+
 const WhatsAppFloat = () => {
   const whatsappNumber = "5571982303179";
 
@@ -6,6 +8,7 @@ const WhatsAppFloat = () => {
       href={`https://wa.me/${whatsappNumber}`}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => pushToDataLayer('generate_lead', { conversion_label: 'whatsapp_click', button_location: 'float_button' })}
       className="fixed bottom-6 right-6 z-50 bg-[#00FF00] hover:bg-[#00DD00] text-white rounded-full p-4 shadow-2xl hover:shadow-[#00FF00]/50 transition-all duration-300 hover:scale-110 animate-bounce"
       aria-label="Fale conosco pelo WhatsApp"
     >

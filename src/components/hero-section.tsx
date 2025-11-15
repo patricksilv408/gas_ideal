@@ -1,5 +1,6 @@
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { pushToDataLayer } from "@/lib/utils";
 
 const HeroSection = () => {
   const whatsappNumber = "5571982303179";
@@ -50,6 +51,7 @@ const HeroSection = () => {
                   href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => pushToDataLayer('generate_lead', { conversion_label: 'whatsapp_click', button_location: 'hero_whatsapp' })}
                   className="flex items-center gap-3"
                 >
                   <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
@@ -67,6 +69,7 @@ const HeroSection = () => {
               >
                 <a 
                   href={`tel:${phoneNumber}`}
+                  onClick={() => pushToDataLayer('generate_lead', { conversion_label: 'phone_click', button_location: 'hero_phone' })}
                   className="flex items-center gap-3"
                 >
                   <Phone className="w-7 h-7" />

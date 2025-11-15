@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { pushToDataLayer } from "@/lib/utils";
 
 const Header = () => {
   const whatsappNumber = "5571982303179";
@@ -28,6 +29,7 @@ const Header = () => {
               href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => pushToDataLayer('generate_lead', { conversion_label: 'whatsapp_click', button_location: 'header_whatsapp' })}
               className="flex items-center gap-2"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
