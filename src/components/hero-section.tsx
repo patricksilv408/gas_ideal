@@ -17,10 +17,12 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 py-20 text-center">
-        {/* Badge */}
-        <Badge className="mb-6 bg-[#00FF00] hover:bg-[#00DD00] text-white text-sm md:text-base px-4 py-2 animate-pulse">
-          🟢 ABERTO AGORA - ENTREGA EM ATÉ 30 MIN
-        </Badge>
+        {/* Badge - Moved higher with more top margin */}
+        <div className="mt-16 md:mt-20">
+          <Badge className="mb-6 bg-[#00FF00] hover:bg-[#00DD00] text-white text-sm md:text-base px-4 py-2 animate-pulse">
+            🟢 ABERTO AGORA - ENTREGA EM ATÉ 30 MIN
+          </Badge>
+        </div>
 
         {/* Main Headline */}
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 drop-shadow-lg leading-tight">
