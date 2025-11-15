@@ -8,12 +8,11 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
+      {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/hero-bg.webp')" }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0000FF]/40 via-[#0000FF]/30 to-[#0000FF]/50"></div>
       </div>
 
       {/* Content */}
