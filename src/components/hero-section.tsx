@@ -49,6 +49,12 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 py-20 text-center">
         
+        <img 
+          src="/gasideal-logo.png" 
+          alt="Gás Ideal Logo" 
+          className="mx-auto mb-6 h-24 w-auto drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]" 
+        />
+
         {/* Badge Dinâmico com Animação */}
         {isOpen ? (
           <Badge className="mb-6 bg-[#00FF00] hover:bg-[#00DD00] text-white text-sm md:text-base px-6 py-3 animate-pulse inline-flex items-center gap-2 shadow-lg shadow-green-500/50">
