@@ -11,7 +11,17 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-[500px] md:min-h-[600px] flex items-center overflow-hidden bg-gradient-to-br from-[#0000FF] via-[#0066FF] to-[#00FFFF] pt-24">
-      <div className="container mx-auto px-4 py-12">
+      
+      {/* Image layer */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/ultragaz-em-santo-andre.png" 
+          alt="Entregador Gás Ideal" 
+          className="w-full h-full object-contain object-right-bottom opacity-20 lg:opacity-100"
+        />
+      </div>
+
+      <div className="container mx-auto px-4 py-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           
           {/* Coluna Esquerda - Conteúdo */}
@@ -66,13 +76,9 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Coluna Direita - Imagem do Entregador */}
+          {/* Coluna Direita - Vazia, pois a imagem está no fundo */}
           <div className="hidden lg:block">
-            <img 
-              src="/hero-delivery-man.png" 
-              alt="Entregador Gás Ideal com botijão" 
-              className="w-full h-auto max-h-[600px] object-contain drop-shadow-2xl"
-            />
+            {/* Placeholder to maintain grid structure */}
           </div>
         </div>
       </div>
