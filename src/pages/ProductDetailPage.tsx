@@ -72,11 +72,33 @@ const ProductDetailPage = () => {
     `Olá! Gostaria de comprar: ${product.title}. Qual o preço atual? 🔥`
   );
 
+  const offersData =
+    typeof product.price === "number"
+      ? {
+          "@type": "Offer",
+          url: `${window.location.origin}/produto/${product.slug}`,
+          priceCurrency: "BRL",
+          price: product.price.toFixed(2),
+          priceValidUntil: new Date(
+            Date.now() + 30 * 24 * 60 * 60 * 1000,
+          ).toISOString().split('T')[0],
+          availability:
+            product.availability === "in stock"
+              ? "https://schema.org/InStock"
+              : "https://schema.org/OutOfStock",
+          itemCondition: "https://schema.org/NewCondition",
+          seller: {
+            "@type": "Organization",
+            name: "Gás Ideal Camaçari",
+          },
+        }
+      : undefined;
+
   const structuredData = {
     "@context": "https://schema.org/",
     "@type": "Product",
     name: product.title,
-    image: `https://gasideal.com.br${product.image}`,
+    image: `${window.location.origin}${product.image}`,
     description: product.description,
     sku: product.id,
     mpn: product.id,
@@ -84,22 +106,7 @@ const ProductDetailPage = () => {
       "@type": "Brand",
       name: product.brand,
     },
-    offers: {
-      "@type": "Offer",
-      url: `https://gasideal.com.br/produto/${product.slug}`,
-      priceCurrency: "BRL",
-      price: product.price?.toFixed(2),
-      priceValidUntil: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-      availability:
-        product.availability === "in stock"
-          ? "https://schema.org/InStock"
-          : "https://schema.org/OutOfStock",
-      itemCondition: "https://schema.org/NewCondition",
-      seller: {
-        "@type": "Organization",
-        name: "Gás Ideal Camaçari",
-      },
-    },
+    ...(offersData && { offers: offersData }),
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.9",
