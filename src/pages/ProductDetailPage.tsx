@@ -38,7 +38,13 @@ const ProductDetailSkeleton = () => (
 
 const ProductDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
-  const { data: product, isLoading, isError } = useProductBySlug(slug!);
+  
+  // Validação de slug
+  if (!slug) {
+    return <Navigate to="/404" replace />;
+  }
+
+  const { data: product, isLoading, isError } = useProductBySlug(slug);
 
   const whatsappNumber = "5571982303179";
 
@@ -56,12 +62,12 @@ const ProductDetailPage = () => {
     return <ProductDetailSkeleton />;
   }
 
-  if (isError || !product) {
+  // Validação: produto não encontrado ou sem preço válido
+  if (isError || !product || typeof product.price !== "number") {
     return <Navigate to="/404" replace />;
   }
 
-  const formatPrice = (price: number | null) => {
-    if (price === null) return "Preço sob consulta";
+  const formatPrice = (price: number) => {
     return new Intl.NumberFormat("pt-BR", {
       style: "currency",
       currency: "BRL",
@@ -71,28 +77,6 @@ const ProductDetailPage = () => {
   const whatsappMessage = encodeURIComponent(
     `Olá! Gostaria de comprar: ${product.title}. Qual o preço atual? 🔥`
   );
-
-  const offersData =
-    typeof product.price === "number"
-      ? {
-          "@type": "Offer",
-          url: `${window.location.origin}/produto/${product.slug}`,
-          priceCurrency: "BRL",
-          price: product.price.toFixed(2),
-          priceValidUntil: new Date(
-            Date.now() + 30 * 24 * 60 * 60 * 1000,
-          ).toISOString().split('T')[0],
-          availability:
-            product.availability === "in stock"
-              ? "https://schema.org/InStock"
-              : "https://schema.org/OutOfStock",
-          itemCondition: "https://schema.org/NewCondition",
-          seller: {
-            "@type": "Organization",
-            name: "Gás Ideal Camaçari",
-          },
-        }
-      : undefined;
 
   const structuredData = {
     "@context": "https://schema.org/",
@@ -106,7 +90,24 @@ const ProductDetailPage = () => {
       "@type": "Brand",
       name: product.brand,
     },
-    ...(offersData && { offers: offersData }),
+    offers: {
+      "@type": "Offer",
+      url: `${window.location.origin}/produto/${product.slug}`,
+      priceCurrency: "BRL",
+      price: product.price.toFixed(2),
+      priceValidUntil: new Date(
+        Date.now() + 30 * 24 * 60 * 60 * 1000,
+      ).toISOString().split('T')[0],
+      availability:
+        product.availability === "in stock"
+          ? "https://schema.org/InStock"
+          : "https://schema.org/OutOfStock",
+      itemCondition: "https://schema.org/NewCondition",
+      seller: {
+        "@type": "Organization",
+        name: "Gás Ideal Camaçari",
+      },
+    },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.9",

@@ -1,10 +1,12 @@
 import { Star, ExternalLink, Quote, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useState } from "react";
 
 const GoogleReviewsSection = () => {
   const googleMapsUrl = "https://maps.app.goo.gl/tWiwDjhm9cDFbTJU7";
   const whatsappNumber = "5571982303179";
+  const [imageError, setImageError] = useState(false);
 
   const renderStars = (count: number) => {
     return Array.from({ length: count }, (_, i) => (
@@ -100,25 +102,20 @@ const GoogleReviewsSection = () => {
 
               {/* Imagem das Avaliações */}
               <div className="relative bg-gray-100 p-4 sm:p-8">
-                <img
-                  src="/reviews/reviews-google.png"
-                  alt="Avaliações reais do Google - Gás Ideal Camaçari"
-                  className="w-full h-auto rounded-lg shadow-xl"
-                  loading="lazy"
-                  onError={(e) => {
-                    // Fallback se a imagem não carregar
-                    e.currentTarget.style.display = 'none';
-                    const parent = e.currentTarget.parentElement;
-                    if (parent) {
-                      parent.innerHTML = `
-                        <div class="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-8 text-center">
-                          <p class="text-yellow-800 font-semibold mb-2">📸 Adicione sua imagem de avaliações!</p>
-                          <p class="text-yellow-700 text-sm">Salve como: <code class="bg-yellow-100 px-2 py-1 rounded">public/reviews/reviews-google.png</code></p>
-                        </div>
-                      `;
-                    }
-                  }}
-                />
+                {!imageError ? (
+                  <img
+                    src="/reviews/reviews-google.png"
+                    alt="Avaliações reais do Google - Gás Ideal Camaçari"
+                    className="w-full h-auto rounded-lg shadow-xl"
+                    loading="lazy"
+                    onError={() => setImageError(true)}
+                  />
+                ) : (
+                  <div className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-8 text-center">
+                    <p className="text-yellow-800 font-semibold mb-2">📸 Adicione sua imagem de avaliações!</p>
+                    <p className="text-yellow-700 text-sm">Salve como: <code className="bg-yellow-100 px-2 py-1 rounded">public/reviews/reviews-google.png</code></p>
+                  </div>
+                )}
               </div>
 
               {/* Informações adicionais */}
