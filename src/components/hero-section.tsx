@@ -42,14 +42,13 @@ const HeroSection = () => {
       <div className="relative z-10 container mx-auto px-4 py-20">
         <div className="max-w-4xl mx-auto text-center">
           
-          {/* Logo grande (se tiver) */}
+          {/* Logo */}
           <div className="mb-8">
-            <h1 className="text-white text-6xl md:text-7xl font-black mb-4 drop-shadow-2xl leading-tight">
-              GÁS IDEAL
-            </h1>
-            <div className="text-[#00FFFF] text-2xl md:text-3xl font-bold drop-shadow-lg">
-              CLICOU. PEDIU. CHEGOU!
-            </div>
+            <img 
+              src="/gasideal-logo-hero.png" 
+              alt="Gás Ideal - Clicou. Pediu. Chegou!" 
+              className="mx-auto w-full max-w-lg drop-shadow-2xl"
+            />
           </div>
 
           {/* Badge de status */}
