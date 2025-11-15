@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { useProducts } from "@/queries/products";
 import { Skeleton } from "@/components/ui/skeleton";
 import { CONTACT } from "@/config/constants";
+import { Button } from "@/components/ui/button";
 
 const ProductCardSkeleton = () => (
   <div className="space-y-4">
@@ -18,7 +19,7 @@ const ProductCardSkeleton = () => (
 );
 
 const ProductListSection = () => {
-  const { data: products, isLoading, isError } = useProducts();
+  const { data: products, isLoading, isError, refetch } = useProducts();
 
   const formatPrice = (price: number | null) => {
     if (price === null) return "Preço sob consulta";
@@ -51,8 +52,12 @@ const ProductListSection = () => {
             {isLoading && Array.from({ length: 4 }).map((_, index) => <ProductCardSkeleton key={index} />)}
             
             {isError && (
-              <div className="col-span-full text-center text-red-600 bg-red-100 p-4 rounded-lg">
-                <p>Ocorreu um erro ao carregar os produtos. Tente novamente mais tarde.</p>
+              <div className="col-span-full text-center text-red-600 bg-red-100 p-6 rounded-lg flex flex-col items-center gap-4">
+                <p className="font-semibold">Ocorreu um erro ao carregar os produtos.</p>
+                <p>Por favor, verifique sua conexão com a internet.</p>
+                <Button onClick={() => refetch()} variant="destructive">
+                  Tentar Novamente
+                </Button>
               </div>
             )}
 
@@ -61,6 +66,7 @@ const ProductListSection = () => {
                 key={product.id}
                 to={`/produto/${product.slug}`}
                 className="group"
+                aria-label={`Ver detalhes de ${product.title}`}
               >
                 <Card className="h-full border-none shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-white overflow-hidden">
                   <div className="relative bg-gradient-to-br from-[#00FFFF]/10 to-[#0000FF]/10 p-6 flex items-center justify-center min-h-[250px]">
@@ -72,6 +78,8 @@ const ProductListSection = () => {
                     <img
                       src={product.image || '/placeholder.svg'}
                       alt={product.title}
+                      width="1000"
+                      height="1000"
                       className="w-full h-auto max-w-[180px] object-contain group-hover:scale-110 transition-transform duration-300"
                     />
                   </div>

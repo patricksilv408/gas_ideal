@@ -40,7 +40,6 @@ const ProductDetailSkeleton = () => (
 const ProductDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
   
-  // Validação de slug
   if (!slug) {
     return <Navigate to="/404" replace />;
   }
@@ -61,7 +60,6 @@ const ProductDetailPage = () => {
     return <ProductDetailSkeleton />;
   }
 
-  // Validação: produto não encontrado ou sem preço válido
   if (isError || !product || typeof product.price !== "number") {
     return <Navigate to="/404" replace />;
   }
@@ -147,6 +145,8 @@ const ProductDetailPage = () => {
                       alt={`${product.title} - ${product.brand}`}
                       className="w-full h-auto max-w-md object-contain"
                       loading="eager"
+                      width="1000"
+                      height="1000"
                     />
                   </div>
                   <div className="mt-6 grid grid-cols-2 gap-4">

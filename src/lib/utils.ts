@@ -9,13 +9,13 @@ export const pushToDataLayer = (
   eventName: string,
   eventParams: Record<string, string | number | undefined>,
 ) => {
-  try {
-    window.dataLayer = window.dataLayer || [];
+  // Adicionada verificação para evitar erros caso o GTM não carregue
+  if (window.dataLayer && Array.isArray(window.dataLayer)) {
     window.dataLayer.push({
       event: eventName,
       ...eventParams,
     });
-  } catch (e) {
-    console.error("Error pushing to dataLayer:", e);
+  } else {
+    console.warn("Google Tag Manager's dataLayer is not available.");
   }
 };

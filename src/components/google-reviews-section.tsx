@@ -109,6 +109,8 @@ const GoogleReviewsSection = () => {
                     className="w-full h-auto rounded-lg shadow-xl"
                     loading="lazy"
                     onError={() => setImageError(true)}
+                    width="749"
+                    height="1331"
                   />
                 ) : (
                   <div className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-8 text-center">

@@ -94,6 +94,8 @@ const Footer = () => {
               src="/gasideal-logo.png" 
               alt="Gás Ideal" 
               className="h-16 w-auto mx-auto opacity-80"
+              width="160"
+              height="64"
             />
           </div>
           <p className="text-gray-400 text-sm">
