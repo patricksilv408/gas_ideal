@@ -35,7 +35,7 @@ const HeroSection = () => {
 
             {/* Subtítulo */}
             <p className="text-white text-xl max-w-xl mx-auto lg:mx-0">
-              Peça agora!
+              Qualidade Ultragaz com a entrega mais rápida e confiável de Camaçari. Peça agora!
             </p>
 
             {/* Botões */}
