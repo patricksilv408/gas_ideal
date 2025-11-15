@@ -7,22 +7,22 @@ const BenefitsSection = () => {
       icon: Zap,
       title: "ENTREGA RÁPIDA",
       description: "Receba em minutos",
-      color: "text-cyan-400",
-      bgColor: "bg-cyan-50"
+      color: "text-[#00FFFF]",
+      bgColor: "bg-[#E6FFFF]"
     },
     {
       icon: Shield,
       title: "SEGURANÇA GARANTIDA",
       description: "Produtos certificados",
-      color: "text-blue-600",
-      bgColor: "bg-blue-50"
+      color: "text-[#0000FF]",
+      bgColor: "bg-[#E6E6FF]"
     },
     {
       icon: CreditCard,
       title: "PAGAMENTO FÁCIL",
       description: "Diversas formas de pagamento",
-      color: "text-green-500",
-      bgColor: "bg-green-50"
+      color: "text-[#00FF00]",
+      bgColor: "bg-[#E6FFE6]"
     }
   ];
 

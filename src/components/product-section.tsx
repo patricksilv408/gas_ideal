@@ -6,22 +6,24 @@ const ProductSection = () => {
   const whatsappNumber = "5571982303179";
 
   return (
-    <section className="py-20 bg-blue-600">
+    <section className="py-20 bg-[#0000FF]">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Product Image Side */}
             <div className="relative">
               <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 shadow-2xl">
-                <Badge className="mb-4 bg-green-500 text-white text-sm px-4 py-2">
+                <Badge className="mb-4 bg-[#00FF00] text-white text-sm px-4 py-2">
                   ⚡ ENTREGA RÁPIDA
                 </Badge>
-                <div className="bg-white rounded-2xl p-8 shadow-xl">
-                  <img 
-                    src="/placeholder.svg" 
-                    alt="Botijão Ultragaz 13kg" 
-                    className="w-full h-auto max-w-sm mx-auto"
-                  />
+                <div className="bg-white rounded-2xl p-12 shadow-xl flex items-center justify-center min-h-[300px]">
+                  <div className="text-center">
+                    <svg className="w-32 h-32 mx-auto mb-4 text-[#0000FF]" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                    </svg>
+                    <p className="text-lg font-semibold text-gray-700">Botijão Ultragaz 13kg</p>
+                    <p className="text-sm text-gray-500 mt-2">Entre em contato para consultar preços</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -34,19 +36,19 @@ const ProductSection = () => {
               
               <div className="space-y-4 mb-8">
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
+                  <CheckCircle2 className="w-6 h-6 text-[#00FF00] flex-shrink-0 mt-1" />
                   <p className="text-lg">Produto original e certificado</p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
+                  <CheckCircle2 className="w-6 h-6 text-[#00FF00] flex-shrink-0 mt-1" />
                   <p className="text-lg">Entrega rápida e segura</p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
+                  <CheckCircle2 className="w-6 h-6 text-[#00FF00] flex-shrink-0 mt-1" />
                   <p className="text-lg">Melhor custo-benefício da região</p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
+                  <CheckCircle2 className="w-6 h-6 text-[#00FF00] flex-shrink-0 mt-1" />
                   <p className="text-lg">Atendimento profissional</p>
                 </div>
               </div>
@@ -54,7 +56,7 @@ const ProductSection = () => {
               <Button
                 asChild
                 size="lg"
-                className="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white font-bold text-lg px-8 py-7 rounded-xl shadow-2xl hover:shadow-green-500/50 transition-all duration-300 hover:scale-105"
+                className="w-full sm:w-auto bg-[#00FF00] hover:bg-[#00DD00] text-white font-bold text-lg px-8 py-7 rounded-xl shadow-2xl hover:shadow-[#00FF00]/50 transition-all duration-300 hover:scale-105"
               >
                 <a 
                   href={`https://wa.me/${whatsappNumber}`}
