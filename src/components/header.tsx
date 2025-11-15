@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { pushToDataLayer } from "@/lib/utils";
+import { CONTACT } from "@/config/constants";
 
 const Header = () => {
-  const whatsappNumber = "5571982303179";
   const whatsappMessage = encodeURIComponent(
     "Olá! Gostaria de comprar gás. Qual o preço? 🔥"
   );
@@ -26,7 +26,7 @@ const Header = () => {
             className="bg-white hover:bg-gray-100 text-[#0000FF] font-bold px-4 py-3 sm:px-6 sm:py-6 rounded-xl shadow-lg transition-all duration-300 hover:scale-105"
           >
             <a 
-              href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
+              href={`https://wa.me/${CONTACT.whatsappNumber}?text=${whatsappMessage}`}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => pushToDataLayer('generate_lead', { conversion_label: 'whatsapp_click', button_location: 'header_whatsapp' })}

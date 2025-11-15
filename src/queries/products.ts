@@ -3,8 +3,21 @@ import { supabase } from "@/integrations/supabase/client";
 import { Product } from "@/types/product";
 
 const getAllProducts = async (): Promise<Product[]> => {
-  const { data, error } = await supabase.from("products").select("*").order('price', { ascending: true });
-  if (error) throw new Error(error.message);
+  const { data, error } = await supabase
+    .from("products")
+    .select("*")
+    .order('price', { ascending: true });
+  
+  if (error) {
+    console.error("Error fetching products:", {
+      message: error.message,
+      details: error.details,
+      hint: error.hint,
+      code: error.code,
+    });
+    throw new Error(`Failed to fetch products: ${error.message}`);
+  }
+  
   return data || [];
 };
 
@@ -21,12 +34,26 @@ const getProductBySlug = async (slug: string): Promise<Product | null> => {
     .select("*")
     .eq("slug", slug)
     .single();
+  
   if (error) {
-    if (error.code === 'PGRST116') { // Erro quando nenhum registro é encontrado
-        return null;
+    // Produto não encontrado é um caso esperado, não é erro
+    if (error.code === 'PGRST116') {
+      console.warn(`Product not found with slug: ${slug}`);
+      return null;
     }
-    throw new Error(error.message);
+    
+    // Outros erros devem ser logados com detalhes
+    console.error("Error fetching product by slug:", {
+      slug,
+      message: error.message,
+      details: error.details,
+      hint: error.hint,
+      code: error.code,
+    });
+    
+    throw new Error(`Failed to fetch product: ${error.message}`);
   }
+  
   return data;
 };
 

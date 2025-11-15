@@ -1,11 +1,10 @@
 import { pushToDataLayer } from "@/lib/utils";
+import { CONTACT } from "@/config/constants";
 
 const WhatsAppFloat = () => {
-  const whatsappNumber = "5571982303179";
-
   return (
     <a
-      href={`https://wa.me/${whatsappNumber}`}
+      href={`https://wa.me/${CONTACT.whatsappNumber}`}
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => pushToDataLayer('generate_lead', { conversion_label: 'whatsapp_click', button_location: 'float_button' })}

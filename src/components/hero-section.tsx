@@ -1,11 +1,9 @@
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { pushToDataLayer } from "@/lib/utils";
+import { CONTACT, BUSINESS } from "@/config/constants";
 
 const HeroSection = () => {
-  const whatsappNumber = "5571982303179";
-  const phoneNumber = "+5571982303179";
-
   const whatsappMessage = encodeURIComponent(
     "Olá! Gostaria de comprar gás. Qual o preço? 🔥"
   );
@@ -31,7 +29,7 @@ const HeroSection = () => {
             <h1 className="font-black text-5xl sm:text-6xl lg:text-7xl leading-tight">
               <span className="text-[#00FFFF] block">Acabou o gás? A</span>
               <span className="text-white block">GÁS IDEAL Camaçari</span>
-              <span className="text-[#00FFFF] block">entrega em 30 minutos!</span>
+              <span className="text-[#00FFFF] block">entrega em {BUSINESS.deliveryTime}!</span>
             </h1>
 
             {/* Subtítulo */}
@@ -48,7 +46,7 @@ const HeroSection = () => {
                 className="bg-white hover:bg-gray-100 text-[#0000FF] font-bold text-lg px-8 py-7 rounded-2xl shadow-2xl transition-all duration-300 hover:scale-105"
               >
                 <a 
-                  href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
+                  href={`https://wa.me/${CONTACT.whatsappNumber}?text=${whatsappMessage}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => pushToDataLayer('generate_lead', { conversion_label: 'whatsapp_click', button_location: 'hero_whatsapp' })}
@@ -68,7 +66,7 @@ const HeroSection = () => {
                 className="bg-white hover:bg-gray-100 text-[#0000FF] font-bold text-lg px-8 py-7 rounded-2xl shadow-2xl transition-all duration-300 hover:scale-105"
               >
                 <a 
-                  href={`tel:${phoneNumber}`}
+                  href={`tel:${CONTACT.phoneNumber}`}
                   onClick={() => pushToDataLayer('generate_lead', { conversion_label: 'phone_click', button_location: 'hero_phone' })}
                   className="flex items-center gap-3"
                 >
