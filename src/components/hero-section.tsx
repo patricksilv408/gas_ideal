@@ -17,7 +17,7 @@ const HeroSection = () => {
         <img 
           src="/ultragaz-em-santo-andre.png" 
           alt="Entregador Gás Ideal" 
-          className="w-full h-full object-contain object-right-bottom opacity-20 lg:opacity-100"
+          className="w-full h-full object-contain object-right-bottom opacity-20 lg:opacity-100 lg:translate-y-20"
         />
       </div>
 
